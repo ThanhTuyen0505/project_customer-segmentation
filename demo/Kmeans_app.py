@@ -2,15 +2,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# BASE_DIR = thư mục nơi file Kmeans_app.py đang nằm
-BASE_DIR = os.path.dirname(__file__)
-
-# Tạo đường dẫn tuyệt đối tới model
-model_path = os.path.join(BASE_DIR, "kmeans_model.pkl")
+# BASE_DIR = thư mục hiện tại của app
+BASE_DIR = Path.cwd() / "demo"
 # --- Load model, scaler, cluster profile ---
-kmeans = joblib.load("kmeans_model.pkl")
-scaler = joblib.load("scaler.pkl")
-cluster_profile = joblib.load("cluster_profile.pkl")  # bảng trung bình các cluster
+kmeans = joblib.load("BASE_DIR / kmeans_model.pkl")
+scaler = joblib.load("BASE_DIR / scaler.pkl")
+cluster_profile = joblib.load("BASE_DIR / cluster_profile.pkl")  # bảng trung bình các cluster
 
 st.title("Customer Segmentation App")
 st.write("Enter full customer details to predict the segment.")
